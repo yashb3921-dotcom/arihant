@@ -5,76 +5,306 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Arihant Provision Stores - Your trusted local grocery shop in Alandi Devachi, Pune">
     <title>Arihant Provision Stores - Fresh Groceries in Alandi Devachi</title>
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2e7d32;
+            --primary-dark: #1b5e20;
+            --secondary: #ffa000;
+            --text-main: #333;
+            --text-muted: #666;
+            --bg-light: #f9fbf9;
+            --white: #ffffff;
+            --shadow: 0 4px 15px rgba(0,0,0,0.08);
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Header & Nav --- */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tagline {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .btn-login {
+            background: var(--primary);
+            color: white !important;
+            padding: 8px 20px;
+            border-radius: 50px;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        .hero-content h2 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: var(--radius);
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary { background: var(--primary); color: white; margin-right: 15px; }
+        .btn-secondary { background: var(--white); color: var(--primary); }
+
+        /* --- Info Grid --- */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .info-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border-bottom: 4px solid var(--primary);
+        }
+
+        .info-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+
+        .whatsapp-btn {
+            display: inline-block;
+            margin-top: 15px;
+            background: #25d366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* --- Categories --- */
+        .categories { padding: 60px 0; background: #fff; }
+        .categories h2 { text-align: center; margin-bottom: 40px; }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            text-align: center;
+            padding: 25px;
+            background: var(--bg-light);
+            border-radius: var(--radius);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .category-icon { font-size: 3rem; margin-bottom: 10px; }
+
+        /* --- Map & Reviews --- */
+        .map-section { padding: 60px 0; }
+        .map-section h2 { margin-bottom: 30px; }
+        .map-container { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+
+        .reviews { padding: 60px 0; background: #f0f4f0; }
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .stars { color: var(--secondary); margin-bottom: 10px; }
+
+        /* --- Footer --- */
+        footer {
+            background: #1a1a1a;
+            color: #ccc;
+            padding: 60px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 { color: white; margin-bottom: 20px; }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 10px; }
+        .footer-section a { color: #ccc; text-decoration: none; }
+        .footer-bottom { text-align: center; border-top: 1px solid #333; padding-top: 20px; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .hero-content h2 { font-size: 2rem; }
+            .hero { height: 50vh; }
+        }
+    </style>
 </head>
 <body>
     <header>
-        <nav class="navbar">
-            <div class="container">
+        <div class="container">
+            <nav class="navbar">
                 <div class="logo">
                     <h1>🛒 Arihant Provision Stores</h1>
                     <p class="tagline">Your Trusted Neighborhood Grocery Shop</p>
                 </div>
                 <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="login.html" class="btn-login">Login</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#" class="btn-login">Login</a></li>
                 </ul>
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </nav>
+            </nav>
+        </div>
     </header>
 
     <main>
-        <!-- Hero Section -->
         <section class="hero">
-            <div class="hero-content">
-                <h2>Fresh Groceries Delivered to Your Doorstep</h2>
-                <p>Quality products at affordable prices</p>
-                <div class="hero-buttons">
-                    <a href="tel:9881469046" class="btn btn-primary">📞 Call Now</a>
-                    <a href="products.html" class="btn btn-secondary">Browse Products</a>
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Fresh Groceries Delivered to Your Doorstep</h2>
+                    <p>Quality products at affordable prices in Alandi Devachi</p>
+                    <div class="hero-buttons">
+                        <a href="tel:9881469046" class="btn btn-primary">📞 Call Now</a>
+                        <a href="#" class="btn btn-secondary">Browse Products</a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Shop Info -->
         <section class="shop-info">
             <div class="container">
                 <div class="info-grid">
                     <div class="info-card">
                         <h3>📍 Our Location</h3>
                         <p>Behind K.K. Hospital, Alandi Devachi, Pune, Maharashtra, India</p>
+                        <p style="margin-top:10px; font-size: 0.9rem; color: #666;">Easy parking available for customers.</p>
                     </div>
                     <div class="info-card">
                         <h3>📞 Contact Us</h3>
-                        <p>Phone: <a href="tel:9881469046">9881469046</a></p>
+                        <p>Phone: <a href="tel:9881469046" style="color: var(--primary); font-weight: bold; text-decoration: none;">9881469046</a></p>
                         <a href="https://wa.me/919881469046" class="whatsapp-btn" target="_blank">
                             💬 WhatsApp Us
                         </a>
                     </div>
                     <div class="info-card">
                         <h3>🕒 Shop Timings</h3>
-                        <p><strong>Sunday - Friday:</strong><br>
-                        9:00 AM - 1:00 PM<br>
-                        4:00 PM - 9:00 PM</p>
-                        <p><strong>Saturday:</strong><br>
-                        9:00 AM - 1:00 PM</p>
+                        <p><strong>Sun - Fri:</strong> 9 AM - 1 PM | 4 PM - 9 PM</p>
+                        <p><strong>Saturday:</strong> 9 AM - 1 PM</p>
+                        <p style="margin-top:10px; font-size: 0.9rem; color: #d32f2f;">Closed on Saturday Evenings.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Featured Categories -->
         <section class="categories">
             <div class="container">
-                <h2>Shop by Category</h2>
+                <h2 style="font-size: 2rem; color: var(--primary-dark);">Shop by Category</h2>
                 <div class="category-grid">
                     <div class="category-card">
                         <div class="category-icon">🌾</div>
@@ -90,11 +320,11 @@
                     </div>
                     <div class="category-card">
                         <div class="category-icon">🥛</div>
-                        <h3>Dairy Products</h3>
+                        <h3>Dairy</h3>
                     </div>
                     <div class="category-card">
                         <div class="category-icon">🍪</div>
-                        <h3>Snacks & Biscuits</h3>
+                        <h3>Snacks</h3>
                     </div>
                     <div class="category-card">
                         <div class="category-icon">🧴</div>
@@ -104,54 +334,42 @@
             </div>
         </section>
 
-        <!-- Google Map -->
         <section class="map-section">
             <div class="container">
                 <h2>Find Us on Map</h2>
                 <div class="map-container">
                     <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.0!2d73.9!3d18.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDQyJzAwLjAiTiA3M8KwNTQnMDAuMCJF!5e0!3m2!1sen!2sin!4v1234567890"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.11025!2d73.8967!3d18.6758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDQwJzMzLjAiTiA3M8KwNTMnNDguMSJF!5e0!3m2!1sen!2sin!4v1234567890"
                         width="100%" 
                         height="400" 
                         style="border:0;" 
                         allowfullscreen="" 
                         loading="lazy">
                     </iframe>
-                    <p class="map-note">Behind K.K. Hospital, Alandi Devachi, Pune, Maharashtra</p>
                 </div>
             </div>
         </section>
 
-        <!-- Customer Reviews -->
         <section class="reviews">
             <div class="container">
-                <h2>What Our Customers Say</h2>
+                <h2 style="text-align: center; margin-bottom: 40px;">Customer Reviews</h2>
                 <div class="review-grid">
                     <div class="review-card">
-                        <div class="stars">⭐⭐⭐⭐⭐</div>
-                        <p>"Fresh products and great service. Been shopping here for years!"</p>
-                        <h4>- Priya Sharma</h4>
+                        <div class="stars">★★★★★</div>
+                        <p>"Best quality grains in Alandi. The delivery is always on time!"</p>
+                        <h4 style="margin-top:15px;">- Priya S.</h4>
                     </div>
                     <div class="review-card">
-                        <div class="stars">⭐⭐⭐⭐⭐</div>
-                        <p>"Best grocery shop in Alandi. Quick delivery and quality products."</p>
-                        <h4>- Rajesh Patil</h4>
+                        <div class="stars">★★★★★</div>
+                        <p>"Very honest pricing and friendly behavior. Highly recommended for daily needs."</p>
+                        <h4 style="margin-top:15px;">- Rajesh P.</h4>
                     </div>
                     <div class="review-card">
-                        <div class="stars">⭐⭐⭐⭐⭐</div>
-                        <p>"Affordable prices and friendly staff. Highly recommended!"</p>
-                        <h4>- Sunita Deshmukh</h4>
+                        <div class="stars">★★★★★</div>
+                        <p>"Clean store and fresh stock. WhatsApp ordering makes it very convenient."</p>
+                        <h4 style="margin-top:15px;">- Sunita D.</h4>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="cta">
-            <div class="container">
-                <h2>Start Shopping Today!</h2>
-                <p>Create your account and enjoy hassle-free grocery shopping</p>
-                <a href="signup.html" class="btn btn-large">Sign Up Now</a>
             </div>
         </section>
     </main>
@@ -160,30 +378,27 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Arihant Provision Stores</h3>
-                    <p>Your trusted local grocery shop</p>
+                    <h3>Arihant Provision</h3>
+                    <p>Serving Alandi Devachi with quality groceries since years.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Categories</a></li>
+                        <li><a href="#">Our Story</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Contact Info</h3>
+                    <h3>Contact</h3>
                     <p>📞 9881469046</p>
-                    <p>📍 Behind K.K. Hospital<br>Alandi Devachi, Pune</p>
+                    <p>📍 Alandi Devachi, Pune</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Arihant Provision Stores. All rights reserved.</p>
+                <p>&copy; 2026 Arihant Provision Stores. Designed for your convenience.</p>
             </div>
         </div>
     </footer>
-
-    <script src="js/main.js"></script>
 </body>
 </html>
